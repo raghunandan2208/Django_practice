@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'cbvapp/base.html' %}
+{% block body_block %}
+
+<h1 align='center'>List of all Companies</h1>
+
+{% for company in company_list %}
+
+<h2><a href="/{{company.id}}">{{company.name}}</a></h2>
+{% endfor %}
+
+<a href="/create" class = "btn btn-primary" role = "button">Add Company</a>
+
+{% endblock %}

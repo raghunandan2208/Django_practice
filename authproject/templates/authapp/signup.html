@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'authapp/base.html' %}
+{% block body_block %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Hello Guest..!</h1>
+    <h2>Signup here to enjoy our services</h2>
+
+    <form method="post">
+      {{form|crispy}}
+      {%csrf_token%}
+      <br>
+      <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+
+    </div>
+    </div>
+
+    {% endblock %}

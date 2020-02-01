@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/jcss.css"%}">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="jumbotron">
+      <h1 align = "center">All India Jobs Registration Form</h1>
+    </div>
+<div class="container">
+
+    {% block content %}
+    <form method="POST">
+      {{form|crispy}}
+      {%csrf_token%}
+      <button type="submit" class="btn btn-primary btn-lg">Register</button>&nbsp&nbsp&nbsp
+
+    <a class = "btn btn-primary btn-lg" href="/display" role = "button">View Jobs List</a>
+
+    </form>
+
+  {% endblock %}
+  </div>
+  </body>
+</html>

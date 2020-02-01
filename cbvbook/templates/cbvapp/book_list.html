@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'cbvapp/base.html' %}
+{% block body_block %}
+
+<h1 align = 'center'>Books List</h1><hr>
+
+<!-- {% for book in book_list %} -->
+<h2><a href="/{{book.id}}">{{book.title}}</a></h2>
+<!-- <ul>
+  <li>Book Title: {{book.title}}</li>
+  <li>Book Author: {{book.author}}</li>
+  <li>Book Pages: {{book.pages}}</li>
+  <li>Book Price: {{book.price}}</li>
+</ul> -->
+
+
+<!-- {% endfor %} -->
+{% endblock %}

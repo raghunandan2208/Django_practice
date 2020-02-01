@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/jcss.css"%}">
+    <title></title>
+  </head>
+  <body>
+
+    <h1 align='center'>All India Jobs Information</h1>
+    {% if jobs_list %}
+    <table class="table table-bordered">
+      <thead>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Job Location</th>
+        <th>Job Experience</th>
+        <th>Salary</th>
+
+      </thead>
+      {% for job in jobs_list %}
+      <tr>
+        <td>{{job.title}}</td>
+        <td>{{job.company}}</td>
+        <td>{{job.location}}</td>
+        <td>{{job.experience}}</td>
+        <td>{{job.salary}}</td>
+
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="container" align = "center">
+
+
+    <a class = "btn btn-primary btn-lg" href="/" role = "button">Home</a>&nbsp&nbsp&nbsp
+      </div>
+    {% else %}
+    <p>No Jobs Found</p>
+    {% endif %}
+
+
+  </body>
+</html>
