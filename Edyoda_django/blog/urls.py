@@ -4,6 +4,6 @@ from blog.views import index
 from blog.views import post_details
 
 urlpatterns = [
-    path('', index),
+    path('', index,name='index'),
     path('<int:id>', post_details),
 ]
