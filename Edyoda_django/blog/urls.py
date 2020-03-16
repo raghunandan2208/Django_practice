@@ -7,5 +7,5 @@ from blog.views import category_buttons
 urlpatterns = [
     path('', index,name='index'),
     path('<int:id>', post_details),
-    path('/', category_buttons, name='category_buttons'),
+    path('filter', category_buttons, name='category_buttons'),
 ]
