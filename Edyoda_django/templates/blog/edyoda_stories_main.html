@@ -1,151 +1,31 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100i,300,400,500,500i,600,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{%static "css/style.css" %}">
-    <title>Learn job-relevant skills at ₹0 upfront cost under ISA(Income Sharing Agreement)</title>
-  </head>
-  <body>
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="blog-container">
 
-    <div class="top-bar">
-      <a class="top-bar-logo" href="{% url 'index' %}">
-        <div class="logo_edyoda">
-        EDYODA
-        <p class="logo_stories">
-            Stories
-          </p>
-        </div>
-        </a>
-        <div class="dropdown">
-          Explore Categories <span class="dropdown_icon"><img src="{% static 'images/dropdown_icon.png'%}" alt="dropdown-icon"></span>
+  <h1 class="trending_posts">Trending Posts</h1>
 
-        </div>
+  <p class="filter-by"><span class="filter_icon"><img src="{% static 'images/filter-icon.png'%}" alt="filter-icon"></span>Filter by Category</p>
+
+    <div >
+      <a href="#"><button class="category_buttons_all" type="button" name="button">All</button></a>
+      {% for cat in category %}
+      <a href="{% url 'category_buttons' %}"><button class="category_buttons" type="button" name="button">{{cat.name}}</button></a>
+      {% endfor %}
     </div>
 
-    <div class="blog-container">
-
-      <h1 class="trending_posts">Trending Posts</h1>
-
-      <p class="filter-by"><span class="filter_icon"><img src="{% static 'images/filter-icon.png'%}" alt="filter-icon"></span>Filter by Category</p>
-
-        <div >
-          <button class="category_buttons_all" type="button" name="button">All</button>
-          <button class="category_buttons" type="button" name="button">Artificial Intelligence</button>
-          <button class="category_buttons" type="button" name="button">Cloud Computing</button>
-          <button class="category_buttons" type="button" name="button">DevOps</button>
-          <button class="category_buttons" type="button" name="button">Programming Languages</button>
-          <button class="category_buttons" type="button" name="button">Mobile Application Development</button>
-          <button class="category_buttons" type="button" name="button">Technology and Tools</button>
-          <button class="category_buttons" type="button" name="button">Get a Job in a Tech Company</button>
-          <button class="category_buttons" type="button" name="button">Others</button>
-
-        </div>
-        {% for post in posts %}
+      {% for post in posts %}
       <div class="blog-card">
-
        <body>
          <a class="card-anchor" href="/blogs/{{post.id}}">
-       <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/7_reasons_to_learn_Python_u3lFION.jpg" alt="Fresh Graduate or IT professional img"/>
-       <h4 class="headding" align="center">{{ post.title|truncatechars:40 }} </h4>
-       <p class="author_name"> Arman Ahmed <span class ="date"> | 05 July 2019</span></p>
-       <p class="paragraph">{{post.content|truncatechars:100}}</p>
-       </a>
+         <img class="blog-card-cover" src="{{ post.image.url }}" alt="Fresh Graduate or IT professional img"/>
+         <h4 class="headding" align="center">{{ post.title|truncatechars:40 }} </h4>
+         <p class="author_name"> {{post.author}} <span class ="date"> | {{post.date}}</span></p>
+         <p class="paragraph">{{post.content|truncatechars:100}}</p>
+         </a>
        </body>
-
       </div>
       {% endfor %}
-
-      <!-- <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/edyoda_WxvDSK1.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">Introducing you all to EdYoda - www.edyoda.com</h4>
-        <p class="author_name"> Arman Ahmed <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">Really ecstatic and immensely proud to introduce you all to our latest attempt of adding value and making an impact to the world we are a part of. ...</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/devops-edYoda-blog-small.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">From identity crisis to the Success Story</h4>
-        <p class="author_name">Kalyan Mahalingam <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">DevOps is a paradigm shift in the way how software products are being built in the modern day Information Technology (IT) organizations. It is becoming the de-facto component in ...</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/Data_Scientist_1920_1280_DsZBGZu.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">Typical day of Data Scientist - An insider story!</h4>
-        <p class="author_name">Saurav Gosh <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">I’ve been a Data Scientist for three years now and I can only say that Chris Lynch was right - “ Big Data and Data Science are the foundation of all the trends that are emerging in the ....</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/edyoda_blog_aws_cloudday_17may2018_Bangalore_small_ByulIE.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">Amazon Web Services (AWS) Cloud Day </h4>
-        <p class="author_name"> Kalyan Mahalingam <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">It was indeed a hectic day with back to back session sandwiched by good food and tea (on a lighter note, need to investigate the tactics behind the 5-star hotels keeping the plates so  ...</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/cloud-meetup-edyoda-small_b2EXhBe.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">edYoda Meetup #01 : A Date with Cloud</h4>
-        <p class="author_name"> Asish Pandey <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">I recently had the opportunity to lead the initiative to organize the first Cloud meetup for edYoda. Here, I recount my experience in organizing the very first in the series of ...</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/pitanjal-industry-4-image-1.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">Industry 4.0 - The Prospects & Journey ahead!</h4>
-        <p class="author_name"> Pitanjal Dutta <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">Did you ever dream a world where computers are connected and will communicate with one another to ultimately make decisions without human involvement?...</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/Copy_of_aptitude_1920_1280_LVmu25g.png" alt = "Machine learning img" />
-        <h4 class="headding" align="center">Why do Database Systems Exist ?</h4>
-        <p class="author_name">Pitanjal Dutta <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">Wondering why Database Management Systems like MySQL, NOSQL, MSSQL, Oracle SQL, MongoDB form the fundamental blocks behind working with Data? Head to the article ...</p>
-        </a>
-        </body>
-      </div>
-
-      <div class="blog-card">
-       <body>
-         <a class="card-anchor" href="./details.html">
-        <img class="blog-card-cover" src="https://edyoda.s3.amazonaws.com/media/blog-images/aptitude-small.jpg" alt = "Machine learning img" />
-        <h4 class="headding" align="center">Master your General Aptitude Job </h4>
-        <p class="author_name"> Pitanjal Dutta <span class ="date"> | 05 July 2019</span></p>
-        <p class="paragraph">A general aptitude becomes very important, when you apply for a job in a tech company. You might be highly skilled in your subject domain. However, these basic aptitude help a  ...</p>
-        </a>
-        </body>
-      </div> -->
-
-      </div>
-
-  </body>
-</html>
+  </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100i,300,400,500,500i,600,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static "css/style.css" %}">
+    <title>Learn job-relevant skills at ₹0 upfront cost under ISA(Income Sharing Agreement)</title>
+  </head>
+  <body>
+
+    <div class="top-bar">
+      <a class="top-bar-logo" href="{% url 'index' %}">
+        <div class="logo_edyoda">
+        EDYODA
+        <p class="logo_stories">
+            Stories
+          </p>
+        </div>
+        </a>
+        <div class="dropdown">
+          Explore Categories <span class="dropdown_icon"><img src="{% static 'images/dropdown_icon.png'%}" alt="dropdown-icon"></span>
+
+        </div>
+    </div>
+
+        {% block content %}
+        {% endblock %}
+
+  </body>
+  </html>
