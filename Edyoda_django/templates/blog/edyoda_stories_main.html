@@ -9,9 +9,9 @@
   <p class="filter-by"><span class="filter_icon"><img src="{% static 'images/filter-icon.png'%}" alt="filter-icon"></span>Filter by Category</p>
 
     <div >
-      <a href="#"><button class="category_buttons_all" type="button" name="button">All</button></a>
+      <a href="{% url 'index' %}"><button class="category_buttons_all" type="button" name="button">All</button></a>
       {% for cat in category %}
-      <a href="{% url 'category_buttons' %}"><button class="category_buttons" type="button" name="button">{{cat.name}}</button></a>
+      <a href="{% url 'category_buttons' cat.id %}"><button class="category_buttons" type="button" name="button">{{cat.name}}</button></a>
       {% endfor %}
     </div>
 

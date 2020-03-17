@@ -23,11 +23,8 @@ def post_details(request, id, *args, **kwargs):
     except:
         return HttpResponse("Invalid ID")
 
-def category_buttons(request, *args, **kwargs):
-    # category = Category.objects.all()
-    # category = Category.objects.get(id = category_id)
-    posts = Post.objects.filter(category__name= "DevOps")
-
+def category_buttons(request, id, *args, **kwargs):
+    posts = Post.objects.filter(category__id = id)
     context = {
     'posts' : posts
     }
