@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/style.css '%}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title></title>
+    <div id="topbar">
+      <a class="top-bar-logo" href="{% url 'display' %}">EdYoda</a>
+      <div>
+        <a class="top-bar-menu" href="#"><i class="fas fa-shopping-cart"></i>  Cart</a>
+        <a class="top-bar-menu" href="#"><i class="fas fa-user"></i>  Settings</a>
+        <a class="top-bar-menu" href="#"><i class="fas fa-sign-in-alt"></i>  Logout</a>
+      </div>
+    </div>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="details-content">
+      <img class="details-img" src="{{item.image.url}}" alt="Product img"/>
+      <div class="product-desc">
+        <h2>{{item.p_title}}</h2>
+        <p>{{item.p_description}}</p>
+        <p>Special Price: Rs.{{item.p_offer_price}}</p>
+        <p>Original Price: Rs.{{item.p_price}}</p>
+        <p>In-Stock: {{item.p_status}}</p>
+        <p>Date of Post: {{item.date}}</p>
+        <p>Available Offers:</p>
+        <p>{{item.p_offers}}</p>
+        <br>
+        <button class="cart-button">Add to Cart</button>
+      </div>
+</div>
+<hr>
+<div class="similar-products">
+
+  <h1>Similar Products:</h1>
+
+      {% for sim in similar %}
+          <div class="blog-card-product-detail">
+           <body>
+             <a class="card-anchor" href="{% url 'details_page' sim.id %}">
+           <img class="product-cover-detail" src="{{sim.image.url}}" alt="Product img"/>
+           <h3 class="headding-detail" align="center"> {{sim.p_title|truncatechars:10}} </h3>
+           </a>
+           </body>
+          </div>
+      {% endfor %}
+
+      </div>
+</div>
+  </body>
+  <footer>Copyright © EdYoda</footer>
+</html>

@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'D:\sample\myproject\venv'; else echo '/D/sample/myproject/venv'; fi;)"
+VIRTUAL_ENV='D:\djangoprojects\Practice\Edyoda_django\venv'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

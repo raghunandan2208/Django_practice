@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'products/navbar.html' %}
+{% load static %}
+
+    {% block content %}
+    <header>
+    <section class="banner-image">
+        <div class="container">
+            <div class="banner-content">
+                <h1>We sell lifestyle</h1>
+                <p>Flat 40% OFF on all premium brands</p>
+                <a href="{% url 'index'%}"><button class="top-button">Shop Now</button></a>
+            </div>
+        </div>
+    </section>
+    </header>
+    <body>
+      <section>
+      <div class="container">
+
+      {% for cat in categories %}
+        <div class="blog-card">
+         <body>
+           <a class="card-anchor" href="{% url 'category_buttons' cat.id %}">
+         <img class="blog-card-cover" src="{{cat.c_image.url}}" alt="Fresh Graduate or IT professional img"/>
+         <h2 class="headding" align="center">{{cat.name}} </h2>
+         <p>{{cat.description}}</p>
+         </a>
+         </body>
+        </div>
+      {% endfor %}
+
+      </div>
+      </section>
+    </body>
+    {% endblock %}

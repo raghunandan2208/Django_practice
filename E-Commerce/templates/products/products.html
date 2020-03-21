@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <div id="topbar">
+    <a class="top-bar-logo" href="{% url 'display' %}">EdYoda</a>
+    <div>
+      <a class="top-bar-menu" href="#"><i class="fas fa-shopping-cart"></i>  Cart</a>
+      <a class="top-bar-menu" href="#"><i class="fas fa-user"></i>  Settings</a>
+      <a class="top-bar-menu" href="#"><i class="fas fa-sign-in-alt"></i>  Logout</a>
+    </div>
+  </div>
+  <body>
+
+  <section>
+  <div class="container">
+
+    <div class="jumbotron jumbotron_style">
+        <h1>Welcome to our Lifestyle store!</h1>
+        <p> We have the best cameras,watches and shirts for you.No need to hunt it around,we have all in one
+            place.
+        </p>
+    </div>
+
+        {% for itm in items %}
+            <div class="blog-card-product">
+             <body>
+               <a class="card-anchor" href="{% url 'details_page' itm.id %}">
+             <img class="product-cover" src="{{itm.image.url}}" alt="Product Image"/>
+             <h2 class="headding" align="center"> {{itm.p_title|truncatechars:10}} </h2>
+             </a>
+             <p>Rs. {{itm.p_price}}</p>
+             <button class="cart-button">Add to Cart</button>
+
+             </body>
+            </div>
+        {% endfor %}
+
+      </div>
+</section>
+
+
+  </body>
+  <footer>Copyright © EdYoda</footer>
+</html>
