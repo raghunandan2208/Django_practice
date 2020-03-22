@@ -28,7 +28,7 @@ def category_buttons(request, id, *args, **kwargs):
 def details_page(request, id, *args, **kwargs):
     try:
         item = Item.objects.get(id = id)
-        similar = Item.objects.filter(p_title__icontains=item)
+        similar = Item.objects.filter(p_brand__icontains=item.p_brand)
         context = {
         'item' : item,
         'similar' : similar,

@@ -17,6 +17,7 @@ class Item(models.Model):
         ("NA", "Not Available")
         ]
     p_title = models.CharField(max_length = 100, verbose_name = "Product Title")
+    p_brand = models.CharField(max_length = 50, verbose_name = "Brand")
     p_description = models.TextField(max_length = 500, verbose_name = "Product Description")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     p_status = models.CharField(max_length=2, choices = status, verbose_name = "Status")

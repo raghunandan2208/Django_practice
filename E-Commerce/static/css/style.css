@@ -138,6 +138,12 @@ section {
   cursor: pointer;
 }
 
+@media screen and (max-width: 900px){
+.blog-card {
+  width: 75%;
+  flex-direction: column;
+}
+}
 .blog-card{
   width: 350px;
   height: 350px;
@@ -205,6 +211,10 @@ section {
   background-color: #ffffff;
   cursor: pointer;
 
+}
+
+.blog-card-product h3{
+  color: black;
 }
 .product-cover{
   width: 250px;
